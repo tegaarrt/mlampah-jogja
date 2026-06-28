@@ -1,5 +1,6 @@
+
 import { NextResponse } from "next/server";
-import prisma from "../../../../lib/prisma"; // Di folder [kode], titik 4 pasang ini BENAR
+import { supabase } from "@/lib/supabase"; // Ganti import Prisma dengan Supabase
 
 export async function GET(
   request: Request,
@@ -9,12 +10,17 @@ export async function GET(
     const resolvedParams = await params;
     const kodeTarget = resolvedParams.kode;
 
-    const ruang = await prisma.ruang.findUnique({
-      where: { kodeAkses: kodeTarget },
-      include: { votes: true }
-    });
+    // Mengambil data Ruang dari Supabase
+    const { data: ruang, error } = await supabase
+      .from('ruang')
+      .select('*') // Sesuaikan kolom jika perlu
+      .eq('kode_ruang', kodeTarget)
+      .single();
 
-    if (!ruang) return NextResponse.json({ success: false, message: "Ruang tidak ditemukan" }, { status: 404 });
+    if (error || !ruang) {
+      return NextResponse.json({ success: false, message: "Ruang tidak ditemukan" }, { status: 404 });
+    }
+
     return NextResponse.json({ success: true, data: ruang });
   } catch (error) {
     return NextResponse.json({ success: false, message: "Terjadi kesalahan server" }, { status: 500 });
