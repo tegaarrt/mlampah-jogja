@@ -110,7 +110,7 @@ function hitungBobotBWM(bo: number[], ow: number[], best_idx: number, worst_idx:
     constrCount++;
   }
 
-  const result = solver.Solve(model);
+  const result = solver.Solve(model) as any;
 
   if (!result.feasible) {
     // Fallback seragam jika solver kaku
