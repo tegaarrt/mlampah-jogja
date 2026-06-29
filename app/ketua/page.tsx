@@ -1121,7 +1121,7 @@ export default function DashboardKetuaModern() {
                       <p style={styles.descHasil}>
                         {isFinalized 
                           ? `Keputusan final untuk grup ${namaGrupAktif} telah dikunci.` 
-                          : `Kalkulasi AI berdasarkan ${jumlahSubmit} suara anggota grup ${namaGrupAktif}.`
+                          : `Kalkulasi berdasarkan ${jumlahSubmit} suara anggota grup ${namaGrupAktif}.`
                         }
                       </p>
                     </div>
