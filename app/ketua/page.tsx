@@ -790,7 +790,7 @@ export default function DashboardKetuaModern() {
   const tembakApiPython = async () => {
     setIsMenghitung(true);
     try {
-      const respon = await fetch("http://127.0.0.1:8000/hitung-bwm", {
+      const respon = await fetch("/api/hitung-bwm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kode_ruang: kodeRuang }) 

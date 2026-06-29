@@ -502,7 +502,7 @@ from scipy.optimize import linprog
 # KONEKSI SUPABASE (sync client — kompatibel v2)
 # ============================================================
 URL = "https://dxhigllweuqjdvrzdxbf.supabase.co"
-KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4aGlnbGx3ZXVxamR2cnpkeGJmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTgwODI3MCwiZXhwIjoyMDk1Mzg0MjcwfQ.NunSmfQ5pkaaDQyRW9n5k1GZhA63X8edH61DbaeAdss"
+KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4aGlnbGx3ZXVxamR2cnpkeGJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk4MDgyNzAsImV4cCI6MjA5NTM4NDI3MH0.lh7EHKWBTIdRmez3_SQhEBRizkGfdgUeash1FAHDuig"
 
 supabase: Client = create_client(URL, KEY)
 
