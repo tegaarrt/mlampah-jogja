@@ -82,6 +82,7 @@
 //     </div>
 //   );
 // }
+
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -201,7 +202,8 @@ export default function DetailDestinasiPage() {
           <div style={styles.sectionBlock}>
             <h3 style={styles.sectionTitle}>Deskripsi Tempat</h3>
             <p style={styles.deskripsiText}>
-              {destinasi.deskripsi || "Belum ada deskripsi mendetail mengenai tempat wisata ini."}
+              {/* PERBAIKAN: Menggunakan deskripsi_lengkap sesuai kolom databasemu */}
+              {destinasi.deskripsi_lengkap || "Belum ada deskripsi mendetail mengenai tempat wisata ini."}
             </p>
           </div>
 
@@ -263,18 +265,25 @@ export default function DetailDestinasiPage() {
 // === CSS IN JS ===
 const styles: { [key: string]: React.CSSProperties } = {
   pageContainer: { minHeight: "100vh", backgroundColor: "#f8fafc", fontFamily: "'Inter', sans-serif" },
-  topBar: { padding: "20px 5%", backgroundColor: "#fff", borderBottom: "1px solid #e2e8f0" },
+  topBar: { padding: "20px 4%", backgroundColor: "#fff", borderBottom: "1px solid #e2e8f0" },
   btnBack: { background: "none", border: "none", color: "#334155", fontSize: "0.95rem", fontWeight: "700", cursor: "pointer" },
   
+  // PERBAIKAN: Diperlebar agar tidak kotak menyempit
   contentWrapper: { 
-    maxWidth: "1200px", margin: "0 auto", padding: "40px 5%", 
-    display: "flex", gap: "40px", alignItems: "flex-start", flexWrap: "wrap" 
+    maxWidth: "1400px", // Diubah dari 1200px ke 1400px agar lebih lebar
+    width: "100%",
+    margin: "0 auto", 
+    padding: "40px 4%", 
+    display: "flex", 
+    gap: "50px", // Jarak antar kolom diperbesar
+    alignItems: "flex-start", 
+    flexWrap: "wrap" 
   },
   
-  // KIRI
-  leftColumn: { flex: "1 1 350px", display: "flex", flexDirection: "column", gap: "20px" },
+  // KIRI: Disesuaikan agar proporsional dengan kolom kanan yang lebih luas
+  leftColumn: { flex: "1 1 380px", display: "flex", flexDirection: "column", gap: "25px" },
   imageContainer: { position: "relative", width: "100%", borderRadius: "20px", overflow: "hidden", boxShadow: "0 10px 25px rgba(0,0,0,0.1)" },
-  mainImage: { width: "100%", height: "300px", objectFit: "cover", display: "block" },
+  mainImage: { width: "100%", height: "350px", objectFit: "cover", display: "block" }, // Gambar sedikit ditinggikan
   ratingBadge: { position: "absolute", top: "15px", right: "15px", backgroundColor: "rgba(0,0,0,0.7)", color: "#fff", padding: "6px 12px", borderRadius: "10px", fontWeight: "bold", backdropFilter: "blur(4px)" },
   
   infoCard: { backgroundColor: "#fff", padding: "25px", borderRadius: "20px", boxShadow: "0 4px 15px rgba(0,0,0,0.03)", border: "1px solid #f1f5f9" },
@@ -284,21 +293,21 @@ const styles: { [key: string]: React.CSSProperties } = {
   infoLabel: { fontSize: "0.75rem", color: "#64748b", fontWeight: "700", marginBottom: "4px" },
   infoValue: { fontSize: "1.05rem", color: "#0f172a", fontWeight: "800" },
 
-  // KANAN
-  rightColumn: { flex: "2 1 500px", backgroundColor: "#fff", padding: "40px", borderRadius: "20px", boxShadow: "0 4px 15px rgba(0,0,0,0.02)", border: "1px solid #f1f5f9" },
+  // KANAN: Diberi porsi ruang yang lebih lega
+  rightColumn: { flex: "2 1 700px", backgroundColor: "#fff", padding: "50px", borderRadius: "20px", boxShadow: "0 4px 20px rgba(0,0,0,0.04)", border: "1px solid #f1f5f9" },
   kategoriBadge: { backgroundColor: "#f0fdf4", color: "#16a34a", padding: "6px 14px", borderRadius: "8px", fontSize: "0.8rem", fontWeight: "700", display: "inline-block", border: "1px solid #bbf7d0", marginBottom: "15px" },
-  judulDestinasi: { fontSize: "2.5rem", fontFamily: "Georgia, serif", color: "#0f172a", margin: "0 0 10px 0", fontWeight: "900", lineHeight: "1.2" },
-  lokasiText: { fontSize: "1rem", color: "#64748b", margin: "0 0 30px 0", fontWeight: "500" },
+  judulDestinasi: { fontSize: "2.8rem", fontFamily: "Georgia, serif", color: "#0f172a", margin: "0 0 10px 0", fontWeight: "900", lineHeight: "1.2" },
+  lokasiText: { fontSize: "1.05rem", color: "#64748b", margin: "0 0 30px 0", fontWeight: "500" },
   
-  sectionBlock: { marginBottom: "35px" },
-  sectionTitle: { fontSize: "1.2rem", color: "#0f172a", fontWeight: "800", marginBottom: "10px" },
-  deskripsiText: { fontSize: "1rem", color: "#475569", lineHeight: "1.7" },
+  sectionBlock: { marginBottom: "40px" },
+  sectionTitle: { fontSize: "1.3rem", color: "#0f172a", fontWeight: "800", marginBottom: "12px" },
+  deskripsiText: { fontSize: "1.05rem", color: "#475569", lineHeight: "1.8", textAlign: "justify" },
 
-  gridList: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", marginBottom: "40px" },
+  gridList: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", marginBottom: "40px" },
   listTitle: { fontSize: "1.1rem", color: "#0f172a", fontWeight: "800", marginBottom: "15px" },
-  ulStyle: { padding: 0, margin: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "10px" },
-  liStyle: { fontSize: "0.95rem", color: "#475569", display: "flex", alignItems: "center" },
+  ulStyle: { padding: 0, margin: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "12px" },
+  liStyle: { fontSize: "1rem", color: "#475569", display: "flex", alignItems: "center" },
 
-  ruteCard: { backgroundColor: "#f0fdf4", padding: "25px", borderRadius: "16px", border: "1px solid #bbf7d0" },
-  btnMaps: { backgroundColor: "#4d7c0f", color: "#fff", border: "none", padding: "12px 24px", borderRadius: "8px", fontWeight: "700", fontSize: "0.95rem", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", transition: "background 0.2s" }
+  ruteCard: { backgroundColor: "#f0fdf4", padding: "30px", borderRadius: "16px", border: "1px solid #bbf7d0" },
+  btnMaps: { backgroundColor: "#4d7c0f", color: "#fff", border: "none", padding: "14px 28px", borderRadius: "8px", fontWeight: "700", fontSize: "1rem", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: "8px", transition: "background 0.2s" }
 };
