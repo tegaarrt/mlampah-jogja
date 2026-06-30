@@ -357,7 +357,7 @@ export default function DasborStaffAdmin() {
 
   const jam = new Date().getHours();
   const sapaan = jam < 12 ? "Selamat Pagi" : jam < 18 ? "Selamat Siang" : "Selamat Malam";
-  const menuSidebar = ["Dashboard", "Manajemen Rombongan", "Demographics", "Performance", "Setting"];
+  const menuSidebar = ["Dashboard", "Manajemen Rombongan"];
 
   // === MENGAMBIL DAN MENGOLAH DATA DARI SUPABASE ===
   useEffect(() => {
